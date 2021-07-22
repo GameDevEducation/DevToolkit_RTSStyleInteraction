@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 3678122746855016541}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 8627517167072277632}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 2029194919443241374}
   m_Layer: 0
   m_Name: Left Eye
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 4897751971372167886}
   m_Layer: 0
   m_Name: Right Eye
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 2331498549878756104}
   m_Layer: 0
   m_Name: AI Character
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -747,8 +747,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a727f0633afc240b32550cfc7328e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetPoint: {fileID: 0}
+  _Faction: 0
+  _MaxHealth: 100
+  _CurrentHealth: 100
+  FeedbackLabel: {fileID: 1986967683}
   CanMove: 0
+  NearestPointSearchRange: 5
+  AttackInterval: 1
+  AttackDamage: 20
+  RepairInterval: 1
+  RepairAmount: 20
 --- !u!143 &1170423031584709101
 CharacterController:
   m_ObjectHideFlags: 0
