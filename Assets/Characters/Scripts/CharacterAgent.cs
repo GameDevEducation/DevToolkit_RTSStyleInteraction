@@ -114,6 +114,7 @@ public class CharacterAgent : CharacterBase
     {
         TargetBuilding = null;
         TargetCharacter = null;
+        Agent.ResetPath();
     }
 
     public virtual void MoveTo(Vector3 destination)
@@ -123,7 +124,7 @@ public class CharacterAgent : CharacterBase
         // snap the destination to the navmesh
         NavMeshHit hitResult;
         if (NavMesh.SamplePosition(destination, out hitResult, Character.height, NavMesh.AllAreas))
-            SetDestination(hitResult.position);
+            SetDestination(hitResult.position, ReachedDestinationThreshold);
     }
 
     public virtual void RepairBuilding(BuildingBase building)
@@ -150,7 +151,7 @@ public class CharacterAgent : CharacterBase
 
         // find the nearest navmesh location to the building
         if (NavMesh.SamplePosition(TargetBuilding.transform.position, out hitResult, NearestPointSearchRange, NavMesh.AllAreas))
-            SetDestination(hitResult.position);
+            SetDestination(hitResult.position, MeleeRange);
     }
 
     public virtual void HealCharacter(CharacterBase targetCharacter)
@@ -159,7 +160,7 @@ public class CharacterAgent : CharacterBase
 
         TargetCharacter = targetCharacter;
 
-        SetDestination(targetCharacter.transform.position);
+        SetDestination(targetCharacter.transform.position, MeleeRange);
     }
 
     public virtual void AttackCharacter(CharacterBase targetCharacter)
@@ -168,13 +169,13 @@ public class CharacterAgent : CharacterBase
 
         TargetCharacter = targetCharacter;
 
-        SetDestination(targetCharacter.transform.position);
+        SetDestination(targetCharacter.transform.position, MeleeRange);
     }
 
-    public virtual void SetDestination(Vector3 destination)
+    public virtual void SetDestination(Vector3 destination, float stoppingDistance)
     {
         Agent.SetDestination(destination);
-        Agent.stoppingDistance = MeleeRange;
+        Agent.stoppingDistance = stoppingDistance;
         AtDestination = false;        
     }
 }
